@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to PDF Converter</title>
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f9;
+        }
+        textarea {
+            width: 80%;
+            height: 300px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text to PDF Converter</h1>
+    <textarea id="textInput" placeholder="Apna text yahan likhe..."></textarea>
+    <br>
+    <button onclick="generatePDF()">Generate PDF</button>
+
+    <script>
+        async function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const text = document.getElementById('textInput').value;
+
+            if (!text) {
+                alert("Please enter some text!");
+                return;
+            }
+
+            // Split text into lines for proper formatting
+            const lines = doc.splitTextToSize(text, 180); // 180mm width
+            doc.text(lines, 10, 10); // Starting at 10,10
+
+            doc.save('converted-text.pdf');
+        }
+    </script>
+</body>
+</html>
