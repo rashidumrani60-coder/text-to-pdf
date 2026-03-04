@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Text & Word to PDF </title>
+    <title>Pro Text & Word to PDF</title>
     <meta name="description" content="Premium PDF tool. Convert Text and Word to PDF instantly.">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -38,9 +38,10 @@
             background: white; 
             border-radius: 20px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
         }
         
-        h2 { color: #764ba2; text-align: center; }
+        h2 { color: #764ba2; margin-top: 20px; }
 
         textarea { 
             width: 100%; 
@@ -53,6 +54,7 @@
             box-sizing: border-box; 
             transition: 0.3s;
             outline: none;
+            text-align: left;
         }
 
         textarea:focus { border-color: #667eea; box-shadow: 0 0 10px rgba(102,126,234,0.2); }
@@ -83,45 +85,68 @@
         .ad-label { 
             font-size: 12px; 
             color: #999; 
-            text-align: center; 
-            margin: 15px 0; 
+            margin-bottom: 15px; 
             text-transform: uppercase; 
             letter-spacing: 1px;
         }
 
-        .content-area { margin-top: 40px; padding-top: 20px; border-top: 2px solid #f0f0f0; }
-        
-        .premium-tag {
-            background: #ffeaa7;
-            color: #d35400;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
+        /* Updated Big Circular Premium Button */
+        .premium-btn-circle {
+            background: #ff9f43;
+            color: white;
+            padding: 25px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 800;
             display: inline-block;
-            margin-bottom: 10px;
+            margin: 15px 0;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 8px 20px rgba(255, 159, 67, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            text-transform: uppercase;
         }
 
+        .premium-btn-circle:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: #f39c12;
+            box-shadow: 0 12px 25px rgba(255, 159, 67, 0.5);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .content-area { margin-top: 40px; padding-top: 20px; border-top: 2px solid #f0f0f0; text-align: left; }
+        
         footer { background: #2d3436; color: white; padding: 30px; text-align: center; margin-top: 50px; }
         
         @media (max-width: 600px) {
             .button-group { grid-template-columns: 1fr; }
+            .premium-btn-circle { font-size: 16px; width: 90%; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1 style="margin:0; font-size: 2.5rem;">Rashid Umrani PDF Tool</h1>
-    <p>Fast, Secure & Professional Document Converter</p>
+    <h1 style="margin:0; font-size: 2.5rem;">Pro PDF Converter</h1>
+    <p>Fast, Secure & Professional Document Tool</p>
 </header>
 
 <div class="container">
     <div class="ad-label">Advertisement</div>
-    <span class="premium-tag">PREMIUM FEATURE</span>
+    
+    <button class="premium-btn-circle" onclick="handleWordToPdf()">
+        Click Here And Dont Laugh
+    </button>
+
     <h2>Convert to PDF Instantly</h2>
 
-    <textarea id="textInput" placeholder="Paste your text here to convert or use our Word to PDF tool..."></textarea>
+    <textarea id="textInput" placeholder="Paste your text here to convert..."></textarea>
     
     <div class="button-group">
         <button class="btn btn-text" onclick="generatePDF()">Download Text PDF</button>
@@ -129,13 +154,13 @@
     </div>
 
     <div class="content-area">
-        <h3>Why choose Rashid's Tool?</h3>
-        <p>This tool uses 256-bit encryption for local processing. Your data is 100% safe. Join thousands of users who trust <strong>Rashid Umrani</strong> for their daily document needs.</p>
+        <h3>Why choose our Tool?</h3>
+        <p>This tool uses 256-bit encryption for local processing. Your data is 100% safe. Join thousands of users who trust our platform for their daily document needs.</p>
     </div>
 </div>
 
 <footer>
-    <p>&copy; 2026 Rashid Umrani | Dev Portfolio</p>
+    <p>&copy; 2026 Pro PDF Tool | Dev Portfolio</p>
 </footer>
 
 <script>
@@ -161,21 +186,16 @@
             y += 10;
         });
 
-        doc.save('Rashid-Converted-Doc.pdf');
+        doc.save('Converted-Document.pdf');
     }
 
     // 2. Word to PDF Logic with Direct Link Ad
     function handleWordToPdf() {
-        // Aapka Monetag Direct Link
         const adLink = "https://omg10.com/4/10681193";
-        
-        // Naye tab mein ad khulega
         window.open(adLink, '_blank');
 
-        // User ko batane ke liye ke feature activate ho raha hai
         alert("Wait! Premium Tool is opening in a new tab. Please allow the page to load.");
         
-        // 2 Seconds baad tool ka action (Filhal alert, aap yahan file upload trigger kar sakte hain)
         setTimeout(() => {
             alert("Now Select your Word (.docx) file for conversion.");
         }, 2000);
@@ -186,4 +206,3 @@
 
 </body>
 </html>
-
